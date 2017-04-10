@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import hashlib
-
-from django.utils.encoding import force_bytes
-
 """
 Created on 06.04.17.
 (c) Ivan Semernyakov <direct@beatum-group.ru>
@@ -14,9 +10,6 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.shortcuts import get_list_or_404
 from .models import Category
-from django.core.cache import cache
-from django.conf import settings
-from django.template import Context, Template
 
 
 def index(request):

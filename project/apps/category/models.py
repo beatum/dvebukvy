@@ -8,9 +8,7 @@ Created on 06.04.17.
 
 from django.db import models
 from django.core.cache import cache
-from django.core.cache.utils import make_template_fragment_key
 from mptt.models import MPTTModel, TreeForeignKey
-from datetime import tzinfo
 
 
 class Category(MPTTModel):

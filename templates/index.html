@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static cache mptt_tags %}
-
 {% block content %}
 <div class="row">
   <div class="col-md-12">
@@ -14,11 +13,7 @@
     </ul>
     <hr>
     <h4>Сategorie's tree</h4>
-
-
-
       {% if nodes %}
-
         <ul>
           {% recursetree nodes %}
               {% cache 60 nodecache node.id %}
@@ -32,14 +27,10 @@
               </li>
               {% endcache %}
           {% endrecursetree %}
-
         </ul>
       {% else %}
       <p>Items not found! Follow to Instrucsion!</p>
       {% endif %}
-
-
-
    </div>
 </div>
 {% endblock %}
