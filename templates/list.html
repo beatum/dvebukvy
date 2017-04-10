@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static mptt_tags %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-5">
+      <h3>Nested categorie's tree</h3>
+      <hr>
+      <ul>
+        {% recursetree nodes %}
+          <li>
+            <a href="/list/{{ node.id }}/">{{ node.title }}</a>
+            {% if node.is_root_node %}
+              {% ifequal node.id root_category_id %}
+                {% if not node.is_leaf_node %}
+                  <ul class="children">
+                    {{ children }}
+                  </ul>
+                {% endif %}
+              {% endifequal %}
+            {% else %}
+              {% if not node.is_leaf_node %}
+                {% if current_category.id == node.id %}
+                  <ul class="children">
+                    {{ children }}
+                  </ul>
+                {% elif node.level < current_category.level %}
+                  <ul class="children">
+                    {{ children }}
+                  </ul>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </li>
+        {% endrecursetree %}
+      </ul>
+    </div>
+    <div class="col-md-7">
+      <h3>Category content</h3>
+      <hr>
+      <h4 class="page-title">{{ current_category.title }}</h4>
+      <p>{{ current_category.description }}</p>
+    </div>
+  </div>
+{% endblock %}

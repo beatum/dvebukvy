@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static cache mptt_tags %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h3>Instrucsion</h3>
+    <hr>
+    <ul>
+      <li>Go to the "./project" directory and run command: <code>scrapy runspider myspider.py -o items.json</code></li>
+      <li>Run command: <code>./manage.py make_content</code></li>
+      <li>Check up <a href="/admin/">admin page</a></li>
+      <li>Then go to <a href="/list/1/">category page</a> and see at results or use "Сategorie's tree".</li>
+    </ul>
+    <hr>
+    <h4>Сategorie's tree</h4>
+
+
+
+      {% if nodes %}
+
+        <ul>
+          {% recursetree nodes %}
+              {% cache 60 nodecache node.id %}
+              <li>
+                  <a href="/list/{{ node.id }}/">{{ node.title }}</a>
+                  {% if not node.is_leaf_node %}
+                      <ul class="children">
+                          {{ children }}
+                      </ul>
+                  {% endif %}
+              </li>
+              {% endcache %}
+          {% endrecursetree %}
+
+        </ul>
+      {% else %}
+      <p>Items not found! Follow to Instrucsion!</p>
+      {% endif %}
+
+
+
+   </div>
+</div>
+{% endblock %}
