@@ -11,13 +11,10 @@ Tested on:
 
 ## Usage
 
-Read article if needed: https://www.rosehosting.com/blog/install-elasticsearch-on-ubuntu-14-04/
-
 #### Clone project:
 ```
 $ mkdir testproject && cd $_
-$ git clone https://github.com/beatum/djangorest_and_elasticserch.git
-$ cd djangorest_and_elasticserch
+$ git clone https://github.com/beatum/dvebukvy.git
 ```
 
 #### Initialize ```virtualenv``` if needed:
@@ -32,6 +29,7 @@ $ source {virtualenv_path}/bin/activate
 
 #### Install ```pip``` dependencies using ```./requirements.txt``` they are not already installed:
 ```
+$ cd project
 $ pip install -r requirements.txt
 ```
 
@@ -55,26 +53,25 @@ Check up settings.py !
 $ ./manage.py migrate
 ```
 
-#### Create admin user:
-```
-$ ./manage.py createsuperuser
-```
-
-#### Create new article with command:
-```
-$ ./manage.py create_article 1000
-```
-
-#### Rebuild index
-```
-$ ./manage.py rebuild_index
-```
-
 #### Collect Static
 ```
 $ ./manage.py collectstatic
 ```
 
+#### Create admin user:
+```
+$ ./manage.py createsuperuser
+```
+
+#### Parse data with scrapy!
+```
+$ scrapy runspider myspider.py -o items.json
+```
+
+#### Create new content with command:
+```
+$ ./manage.py make_content
+```
 
 #### Test dev environment.
 ```
@@ -82,8 +79,6 @@ $ ./manage.py runserver
 ```
 
 Now you can go to the localhost:8000 and you should see "Hello, World!" - page.
-
-Search and test the API...
 
 ### That's all! Good luck!
 
