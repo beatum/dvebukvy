@@ -8,9 +8,9 @@ class DataSpider(scrapy.Spider):
     name = 'dataspider'
 
     urls = []
-
-    for i in xrange(1, 1000):
-        i+=1
+    i = 0
+    for i in xrange(1000):
+        i += 1
         url = 'https://yandex.ru/referats/?t=astronomy&s=%d' % i
         urls.append(url)
         

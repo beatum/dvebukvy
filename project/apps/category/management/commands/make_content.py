@@ -39,14 +39,14 @@ class Command(BaseCommand):
                 data = json.load(json_data)
                 for index, item in enumerate(data):
                     if index <= 100:
-                        # print('L1', index, '>= 100')
+                        print('L1', index, '>= 100')
                         with transaction.atomic():
                             Category.objects.create(
                                 category_title=str(index),
                                 title=item['title'][0],
                                 description=item['text'][0])
                     elif index >= 100 and index <= 200:
-                        # print('L2', '>= 100', index, '<= 200')
+                        print('L2', '>= 100', index, '<= 200')
                         parent = Category.objects.get(category_title='0')
                         with transaction.atomic():
                             Category.objects.create(
@@ -55,7 +55,7 @@ class Command(BaseCommand):
                                 title=item['title'][0],
                                 description=item['text'][0])
                     elif index >= 200 and index <= 500:
-                        # print('L3', '>= 200', index, '<= 500')
+                        print('L3', '>= 200', index, '<= 500')
                         parent = Category.objects.get(category_title='101')
                         with transaction.atomic():
                             Category.objects.create(
@@ -64,7 +64,7 @@ class Command(BaseCommand):
                                 title=item['title'][0],
                                 description=item['text'][0])
                     elif index >= 500 and index <= 1000:
-                        # print('L4', '>= 500', index, '<= 1000')
+                        print('L4', '>= 500', index, '<= 1000')
                         parent = Category.objects.get(category_title='301')
                         with transaction.atomic():
                             Category.objects.create(
